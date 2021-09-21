@@ -3,20 +3,29 @@ def volume_kubus(x):
 
     Raise a RuntimeError exception with message "negatieve lengte" if x < 0.
     """
+    vol = x **3
+    if x < 0:
+        raise RuntimeError("negatieve lengte")
+    return vol
+
+
+class NegativeDuration(RuntimeError):
     pass
-
-
 def minutes_in_day(x):
     """Return the number of minutes in x days
 
     Raise a custom NegativeDuration exception if x < 0.
     """
-    pass
+    min = x * 1440
+    if x < 0:
+        raise NegativeDuration 
+    return min
 
 
 def minutes_in_week(x):
     """Return the number of minutes in x weeks"""
-    pass
+    min = x * 1440 * 7
+    return min
 
 
 def list_of_squares(n):
@@ -25,7 +34,11 @@ def list_of_squares(n):
     >>> list_of_squares(3)
     [0, 1, 4]
     """
-    pass
+    l = []
+    for i in range (0, n):
+        sq = i **2
+        l.append(sq)
+    return l 
 
 
 def product_of_list(l):
@@ -34,7 +47,10 @@ def product_of_list(l):
     >>> product_of_list([2,3,4])
     24
     """
-    pass
+    product = 1
+    for i in range(0, len(l)):
+        product = product * l[0+i]
+    return product
 
 
 def price_search(articles, name):
@@ -47,4 +63,7 @@ def price_search(articles, name):
     >>> price_search("Doom")
     25
     """
-    pass
+    for sublist in articles:
+        if sublist[0] == name:
+            return sublist[1]
+    return None
